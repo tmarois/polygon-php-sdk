@@ -1,0 +1,30 @@
+{
+	"description": "PHP SDK for the Polygon Market API",
+	"keywords": ["polygon", "stock market","stocks", "market api", "market", "API"],
+	"name": "tmarois/polygon-php-sdk",
+	"homepage": "https://github.com/tmarois/polygon-php-sdk",
+	"type": "package",
+
+	"authors": [
+        {
+            "name": "Timothy Marois",
+            "email": "timothymarois@gmail.com"
+        }
+    ],
+
+	"require": {
+        "php": ">=7",
+        "guzzlehttp/guzzle": "~6.0"
+	},
+
+	"require-dev": {
+		"php-coveralls/php-coveralls": "^2.0",
+		"phpunit/phpunit": "6.*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Polygon\\": "src/"
+		}
+	}
+}
