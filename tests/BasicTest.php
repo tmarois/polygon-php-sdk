@@ -7,7 +7,7 @@ class BasicTest extends \PHPUnit\Framework\TestCase
 
     public function testLastTrade()
     {
-        $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
+        $polygon = new Polygon("");
         $response = $polygon->stocks()->getLastTrade('DWT');
 
         // print_r($response);
@@ -17,7 +17,7 @@ class BasicTest extends \PHPUnit\Framework\TestCase
 
     public function testLastQuote()
     {
-        $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
+        $polygon = new Polygon("");
         $response = $polygon->stocks()->getLastQuote('DWT');
 
         // print_r($response);
@@ -27,7 +27,7 @@ class BasicTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDetails()
     {
-        $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
+        $polygon = new Polygon("");
         $response = $polygon->stocks()->getDetails('DWT');
 
         // print_r($response);
@@ -35,39 +35,39 @@ class BasicTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('DWT', ($response['symbol'] ?? ''));
     }
 
-    // public function testTradeHistory()
-    // {
-    //     $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
-    //     $response = $polygon->stocks()->getTradeHistory('DWT','2019-09-25');
-
-    //     print_r($response);
-
-    //     // $this->assertEquals('DWT', ($response['symbol'] ?? ''));
-    // }
-
-    public function testQuoteHistory()
+    public function testTradeHistory()
     {
-        $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
-        $response = $polygon->stocks()->getQuoteHistory('DWT','2019-09-25');
+        $polygon = new Polygon("");
+        $response = $polygon->stocks()->getTradeHistory('DWT','2019-09-25');
 
         print_r($response);
 
         // $this->assertEquals('DWT', ($response['symbol'] ?? ''));
     }
 
-    // public function testSingleSnapshot()
-    // {
-    //     $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
-    //     $response = $polygon->stocks()->getSnapshot('DWT');
+    public function testQuoteHistory()
+    {
+        // $polygon = new Polygon("");
+        // $response = $polygon->stocks()->getQuoteHistory('DWT','2019-09-25');
 
-    //     print_r($response);
+        // print_r($response);
 
-    //     // $this->assertEquals('DWT', ($response['symbol'] ?? ''));
-    // }
+        // $this->assertEquals('DWT', ($response['symbol'] ?? ''));
+    }
+
+    public function testSingleSnapshot()
+    {
+        // $polygon = new Polygon("");
+        // $response = $polygon->stocks()->getSnapshot('DWT');
+
+        // print_r($response);
+
+        // $this->assertEquals('DWT', ($response['symbol'] ?? ''));
+    }
 
     // public function testGetNews()
     // {
-    //     $polygon = new Polygon("AKBZMCY0A80HTKZ59D4P");
+    //     $polygon = new Polygon("");
     //     $response = $polygon->stocks()->getNews('DWT', 1, 20);
 
     //     print_r($response);
