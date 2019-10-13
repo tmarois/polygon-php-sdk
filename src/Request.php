@@ -23,13 +23,13 @@ class Request
      * Start the class()
      *
      */
-    public function __construct(Polygon $polygon)
+    public function __construct(Polygon $polygon, $timeout = 6)
     {
         $this->polygon = $polygon;
 
         $this->client = new Client([
             'base_uri' => $this->polygon->getRoot(),
-            'timeout'  => 5.0
+            'timeout'  => $timeout
         ]);
     }
 
@@ -39,13 +39,13 @@ class Request
      * Send request
      *
      */
-    public function send($handle, $segment = [], $params = [])
+    public function send($handle, $params = [])
     {
         // build and prepare our full path rul
-        $url = $this->prepareUrl($handle, $segment);
+        $url = $this->prepareUrl($handle, $params);
 
         // add the api key to all requests
-        $params['apiKey'] = $this->polygon->getKey();        
+        $params['apiKey'] = $this->polygon->getKey(); 
 
         return (new Response($this->polygon, $this->client->request('GET', $url, [
             'query' => $params

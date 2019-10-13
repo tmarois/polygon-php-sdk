@@ -35,6 +35,6 @@ class Response
      */
     public function contents()
     {
-        return json_decode($this->request->getBody()->getContents());
+        return json_decode($this->request->getBody()->getContents(),true);
     }
 }

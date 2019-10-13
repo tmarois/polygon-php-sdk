@@ -10,12 +10,32 @@ class Stocks
     private $polygon;
 
     /**
+     * Request timeout
+     *
+     * @return int
+     */
+    private $timeout;
+
+    /**
      * Start the class()
      *
      */
     public function __construct($polygon)
     {
         $this->polygon = $polygon;
+    }
+
+     /**
+     * timeout()
+     *
+     * Set the timeout for this request
+     *
+     */
+    public function setTimeout(int $timeout)
+    {
+        $this->timeout = $timeout;
+
+        return $this;
     }
 
     /**
@@ -28,7 +48,7 @@ class Stocks
     {
         $contents = (array) $this->polygon->request('last_trade',[
             'symbol' => $ticker
-        ])->contents();
+        ],$this->timeout)->contents();
 
         return (array) $contents['last'] ?? [];
     }
@@ -43,7 +63,7 @@ class Stocks
     {
         $contents = (array) $this->polygon->request('last_quote',[
             'symbol' => $ticker
-        ])->contents();
+        ],$this->timeout)->contents();
 
         return (array) $contents['last'] ?? [];
     }
@@ -58,7 +78,7 @@ class Stocks
     {
         $contents = (array) $this->polygon->request('ticker_details',[
             'symbol' => $ticker
-        ])->contents();
+        ],$this->timeout)->contents();
 
         return (array) $contents ?? [];
     }
@@ -74,7 +94,7 @@ class Stocks
         $contents = (array) $this->polygon->request('ticker_news',['symbol' => $ticker],[
             'page' => $page,
             'limit' => $limit
-        ])->contents();
+        ],$this->timeout)->contents();
 
         return (array) $contents ?? [];
     }
@@ -89,7 +109,7 @@ class Stocks
     {
         $contents = (array) $this->polygon->request('ticker_snapshot',[
             'ticker' => $ticker
-        ])->contents();
+        ],$this->timeout)->contents();
 
         return (array) $contents['ticker'] ?? [];
     }
@@ -100,14 +120,17 @@ class Stocks
      * Get the ticker trade history for a given date
      *
      */
-    public function getTradeHistory($ticker, $date)
+    public function getTradeHistory($ticker, $date, $limit = 100, $timestampOffset = 0)
     {
         $contents = (array) $this->polygon->request('historic_trades',[
             'ticker' => $ticker,
-            'date' => $date
-        ])->contents();
+            'date' => $date,
+            'limit' => $limit,
+            'offset' => $timestampOffset
+        ],$this->timeout)->contents();
 
-        return (array) $contents['results'] ?? [];
+        // return (array) $contents['results'] ?? [];
+        return (array) $contents['ticks'] ?? [];
     }
 
     /**
@@ -116,12 +139,13 @@ class Stocks
      * Get the ticker quote history for a given date
      *
      */
-    public function getQuoteHistory($ticker, $date)
+    public function getQuoteHistory($ticker, $date, $limit = 100)
     {
         $contents = (array) $this->polygon->request('historic_nbbo_quotes',[
             'ticker' => $ticker,
-            'date' => $date
-        ])->contents();
+            'date' => $date,
+            'limit' => $limit
+        ],$this->timeout)->contents();
 
         return (array) $contents['results'] ?? [];
     }

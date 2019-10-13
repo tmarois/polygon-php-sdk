@@ -40,7 +40,8 @@ class Polygon
         "ticker_snapshot"      => "v2/snapshot/locale/us/markets/stocks/tickers/{ticker}",
     
         "historic_quotes"      => "v1/historic/quotes/{symbol}/{date}",
-        "historic_trades"      => "v2/ticks/stocks/trades/{ticker}/{date}",
+        // "historic_trades"      => "v2/ticks/stocks/trades/{ticker}/{date}",
+        "historic_trades"      => "v1/historic/trades/{ticker}/{date}",
         "historic_nbbo_quotes" => "v2/ticks/stocks/nbbo/{ticker}/{date}",
         "last_trade"           => "v1/last/stocks/{symbol}",
         "last_quote"           => "v1/last_quote/stocks/{symbol}",
@@ -105,9 +106,9 @@ class Polygon
      *
      * @return Polygon\Request
      */
-    public function request($handle, $params = [])
+    public function request($handle, $params = [], $timeout = 6)
     {
-        return (new Request($this))->send($handle, $params);
+        return (new Request($this, $timeout))->send($handle, $params);
     }
 
     /**

@@ -57,13 +57,13 @@ $response = $polygon->stocks()->getLastQuote('AAPL');
 **[Trade History](https://polygon.io/docs/#!/Stocks--Equities/get_v2_ticks_stocks_trades_ticker_date)**: Get historic trades for a ticker.
 
 ```php
-$response = $polygon->stocks()->getTradeHistory('AAPL','2019-09-25');
+$response = $polygon->stocks()->getTradeHistory('AAPL','2019-09-25',100);
 ```
 
 **[Quote History](https://polygon.io/docs/#!/Stocks--Equities/get_v2_ticks_stocks_nbbo_ticker_date)**: Get historic NBBO quotes for a ticker.
 
 ```php
-$response = $polygon->stocks()->getQuoteHistory('AAPL','2019-09-25');
+$response = $polygon->stocks()->getQuoteHistory('AAPL','2019-09-25',100);
 ```
 
 There are more in the [Polygon Documentation](https://polygon.io/docs/#getting-started) than what is presented above, if you want to extend this, please send in a pull request or request a specific feature be added. Thanks.
