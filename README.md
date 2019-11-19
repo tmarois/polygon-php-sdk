@@ -1,4 +1,4 @@
-# Polygon Stock Market PHP SDK
+# Polygon Market PHP SDK
 
 This package acts as the PHP SDK for the [Polygon RESTful API](https://polygon.io/docs/#getting-started).
 
@@ -8,11 +8,9 @@ Use [Composer](http://getcomposer.org/) to install package.
 
 Run `composer require tmarois/polygon-php-sdk:^1.0`
 
-If you do not want to use composer, download the files, and include it within your application, it does not have any dependencies, you will just need to keep it updated with any future releases.
-
 ## Getting Started
 
-First you need to instantiate the polygon object.
+First you need to instantiate the `Polygon` object.
 
 ```php
 use Polygon\Polygon;
@@ -66,7 +64,7 @@ $response = $polygon->stocks()->getTradeHistory('AAPL','2019-09-25',100);
 $response = $polygon->stocks()->getQuoteHistory('AAPL','2019-09-25',100);
 ```
 
-There are more in the [Polygon Documentation](https://polygon.io/docs/#getting-started) than what is presented above, if you want to extend this, please send in a pull request or request a specific feature be added. Thanks.
+There are more in the [Polygon Documentation](https://polygon.io/docs/#getting-started) than what is presented above, if you want to extend this, please send in a pull request or request features you'd like to see added. Thanks!
 
 ## Contributions
 
