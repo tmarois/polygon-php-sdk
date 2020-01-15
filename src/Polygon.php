@@ -54,8 +54,7 @@ class Polygon
      * Set polygon 
      *
      */
-    public function __construct($id = '')
-    {
+    public function __construct($id = '') {
         $this->setKey($id);
     }
 
@@ -76,8 +75,7 @@ class Polygon
      *
      * @return string
      */
-    public function getKey()
-    {
+    public function getKey() {
         return $this->key;
     }
 
@@ -86,8 +84,7 @@ class Polygon
      *
      * @return string
      */
-    public function getRoot()
-    {
+    public function getRoot() {
         return $this->root;
     }
 
@@ -96,8 +93,7 @@ class Polygon
      *
      * @return string
      */
-    public function getPath($handle)
-    {
+    public function getPath($handle) {
         return $this->paths[$handle] ?? false;
     }
 
@@ -106,8 +102,7 @@ class Polygon
      *
      * @return Polygon\Request
      */
-    public function request($handle, $params = [], $timeout = 6)
-    {
+    public function request($handle, $params = [], $timeout = 6) {
         return (new Request($this, $timeout))->send($handle, $params);
     }
 
@@ -118,8 +113,7 @@ class Polygon
      *
      * @return Polygon\Stocks
      */
-    public function stocks()
-    {
+    public function stocks() {
         return (new Stocks($this));
     }
 
@@ -130,8 +124,7 @@ class Polygon
      *
      * @return Polygon\Crypto
      */
-    public function crypto()
-    {
+    public function crypto() {
         // return (new Crypto($this));
     }
 }

@@ -33,8 +33,7 @@ class Response
      * get contents
      *
      */
-    public function contents()
-    {
+    public function contents() {
         return json_decode($this->request->getBody()->getContents(),true);
     }
 }

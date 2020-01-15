@@ -20,8 +20,7 @@ class Stocks
      * Start the class()
      *
      */
-    public function __construct($polygon)
-    {
+    public function __construct($polygon) {
         $this->polygon = $polygon;
     }
 
