@@ -129,7 +129,7 @@ class Stocks
         ],$this->timeout)->contents();
 
         // return (array) $contents['results'] ?? [];
-        return (array) $contents['ticks'] ?? [];
+        return (array) $contents['results'] ?? [];
     }
 
     /**
