@@ -125,7 +125,7 @@ class Stocks
             'ticker' => $ticker,
             'date' => $date,
             'limit' => $limit,
-            'offset' => $timestampOffset
+            'timestamp' => $timestampOffset
         ],$this->timeout)->contents();
 
         // return (array) $contents['results'] ?? [];
