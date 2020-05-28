@@ -138,12 +138,13 @@ class Stocks
      * Get the ticker quote history for a given date
      *
      */
-    public function getQuoteHistory($ticker, $date, $limit = 100)
+    public function getQuoteHistory($ticker, $date, $limit = 100, $timestampOffset = 0)
     {
         $contents = (array) $this->polygon->request('historic_nbbo_quotes',[
             'ticker' => $ticker,
             'date' => $date,
-            'limit' => $limit
+            'limit' => $limit,
+            'timestamp' => $timestampOffset
         ],$this->timeout)->contents();
 
         return (array) $contents['results'] ?? [];
